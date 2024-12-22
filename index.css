@@ -1,0 +1,84 @@
+*{
+    background-color: black;
+}
+header{
+    background-color: rgb(99, 99, 99);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+header h3{
+    background-color: rgb(99, 99, 99);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+}
+.top h1{
+    background-color: rgba(97, 97, 97, 0.356);
+    color: white;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.topp h2{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: underline;
+}
+.topp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+.item{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1.8rem;
+    border-bottom: solid .1rem white;
+    margin-bottom: 1.4rem;
+}
+.item img{
+    width: 12rem;
+}
+.item button{
+    border: none;
+    background-color: rgb(0, 74, 0);
+    color: white;
+    width: 11rem;
+    height: 2.6rem;
+    border-radius: .5rem;
+}
+.item h3{
+    margin-bottom: -.5rem;
+}
+.footer ul li, ul{
+    background-color: rgb(99, 99, 99);
+    color: white;
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+.footer ul li{
+    margin-top: 1.5rem;
+    text-align: center;
+    margin-left: -2rem;
+}
+footer{
+    height: 22rem;
+    background-color: rgb(99, 99, 99);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
