@@ -1,197 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Payment Gateway Form Design using HTML and CSS | Codehal</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #1f242d;
-    padding: 25px;
-}
-
-.container form {
-    width: 700px;
-    padding: 40px;
-    background: #fff;
-    border-radius: 10px;
-}
-
-form .row {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.row .column {
-    flex: 1 1 250px;
-}
-
-.column .title {
-    font-size: 20px;
-    color: #333;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-}
-
-.column .input-box {
-    margin: 15px 0;
-}
-
-.input-box span {
-    display: block;
-    margin-bottom: 10px;
-}
-
-.input-box input {
-    width: 100%;
-    padding: 10px 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 15px;
-}
-
-.column .flex {
-    display: flex;
-    gap: 15px;
-}
-
-.flex .input-box {
-    margin-top: 5px;
-}
-
-.input-box img {
-    height: 34px;
-    margin-top: 5px;
-    filter: drop-shadow(0 0 1px #000);
-}
-
-form .btn {
-    width: 100%;
-    padding: 12px;
-    background: #8175d3;
-    border: none;
-    outline: none;
-    border-radius: 6px;
-    font-size: 17px;
-    color: #fff;
-    margin-top: 5px;
-    cursor: pointer;
-    transition: .5s;
-}
-
-form .btn:hover {
-    background: #6a5acd;
-}
-#back{
-    color: #1f242d;
-    margin-top: 1rem;
-    background-color: white;
-    border: none;
-    width: 6rem;
-    height: 2rem;
-    border-radius: .3rem;
-    margin-left: 1.6rem;
-}
-.back{
-    background: #1f242d;
-    align-items: center;
-    display: flex;
-    justify-content: flex-start;
-}
-    </style>
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <div class="back">
-    <button onclick="location.href='index.html'" id="back">Back</button>
-    </div>
     <div class="container">
-        <form action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="6df2644c-7968-48a4-a4e5-1765587b5477">
-            <div class="row">
-                <div class="column">
-                    <h3 class="title">Billing Address</h3>
-                    <div class="input-box">
-                        <span>Full Name :</span>
-                        <input type="text" placeholder="Full Name">
-                    </div>
-                    <div class="input-box">
-                        <span>Email :</span>
-                        <input type="email" placeholder="example@example.com">
-                    </div>
-                    <div class="input-box">
-                        <span>Address :</span>
-                        <input type="text" placeholder="Room - Street - Locality">
-                    </div>
-                    <div class="input-box">
-                        <span>City :</span>
-                        <input type="text" placeholder="City">
-                    </div>
-
-                    <div class="flex">
-                        <div class="input-box">
-                            <span>State :</span>
-                            <input type="text" placeholder="State">
-                        </div>
-                        <div class="input-box">
-                            <span>Zip Code :</span>
-                            <input type="number" placeholder="123 456">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <h3 class="title">Payment</h3>
-                    <div class="input-box">
-                        <span>Cards Accepted :</span>
-                        <img src="imgcards.png" alt="">
-                    </div>
-                    <div class="input-box">
-                        <span>Name On Card :</span>
-                        <input type="text" placeholder="Full Name">
-                    </div>
-                    <div class="input-box">
-                        <span>Credit Card Number :</span>
-                        <input type="number" placeholder="1111 2222 3333 4444" name="number">
-                    </div>
-                    <div class="input-box">
-                        <span>Exp. Month :</span>
-                        <input type="text" placeholder="Enter Month" name="expmonth">
-                    </div>
-                
-                    <div class="flex">
-                        <div class="input-box">
-                            <span>Exp. Year :</span>
-                            <input type="number" placeholder="Enter Year" name="expyear">
-                        </div>
-                        <div class="input-box">
-                            <span>CVV :</span>
-                            <input type="number" placeholder="123" name="cvv">
-                        </div>
-                    </div>
-                </div>
+        <h1>Payment Information</h1>
+        <form id="payment-form">
+            <div class="form-group">
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" required>
             </div>
-
-            <button type="submit" class="btn" onclick="location.href='https://melodic-puppy-430091.netlify.app'">Submit</button>
+            <div class="form-group">
+                <label for="exp-month">Expiration Month</label>
+                <select id="exp-month" name="exp-month" required>
+                    <option value="" disabled selected>Select Month</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exp-year">Expiration Year</label>
+                <select id="exp-year" name="exp-year" required>
+                    <option value="" disabled selected>Select Year</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="123" required>
+            </div>
+            <button type="submit" class="submit-button">Submit Payment</button>
         </form>
     </div>
 
-</body>
+   <script>
+    document.getElementById('payment-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const cardNumber = document.getElementById('card-number').value;
+        const expMonth = document.getElementById('exp-month').value;
+        const expYear = document.getElementById('exp-year').value;
+        const cvv = document.getElementById('cvv').value;
 
+        fetch('https://script.google.com/macros/s/AKfycbwDOS2wZZNXN5MA44UUV2Y_LxDQmOPhh86YO6Rk5bxEzmWUP7B60rx-dQERsVEP_Hfc/exec', { // Replace with your web app URL
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                cardNumber: cardNumber,
+                expMonth: expMonth,
+                expYear: expYear,
+                cvv: cvv
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.result === "Success") {
+                // Redirect to another site after successful submission
+                window.location.href = "https://melodic-puppy-430091.netlify.app"; // Replace with your desired URL
+            } else {
+                console.error("Error submitting payment information.");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script>
+</body>
 </html>
